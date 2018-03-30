@@ -1,0 +1,22 @@
+.login-button {
+    background-color: $blue;
+    padding: $s-size;
+    color: #fff;
+    font-size: $font-size-large;
+    border: none;
+    font-weight: 300;
+}
+
+.login-button__add {
+    max-width: 200px;
+}
+
+.button__remove {
+    background-color: #888;
+    padding: $s-size;
+    color: white;
+    font-size: $font-size-large;
+    border: none;
+    font-weight: 300;
+
+}
