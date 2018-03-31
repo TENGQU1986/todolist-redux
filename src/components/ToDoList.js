@@ -2,36 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
-class ToDoList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: ''
-    }
+const renderListItem = (props) => (
+  <div>
+    <h1>To Do List</h1>
+    {props.expenses.length}
+  </div>
+);
+
+const mapStateToProps = (state) => {
+  return {
+    expenses: state.expenses
   };
-  
+};
 
-  inputOnChange = (event) => {
-    this.setState({value: event.target.value});
-  }
+export default connect(mapStateToProps)(renderListItem);
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    store.dispatch.addNewItem({value: 234});
-    console.log(value);
-  }
-
-  render() {
-    return (
-      <div>
-        <div>Here is my todolist</div>
-        <input type="text" placeholder="input here" value={this.state.value} onChange={this.inputOnChange}></input>
-        <button onClick={this.onSubmit}>Add New</button>
-      </div>
-    );
-  }
-}
-
-
-
-export default ToDoList;
+<select value={props.filters.sortBy} onChange={() => {
+  props.dispatch(props.filters.sortBy === 'date' ? sortByDate() : sortByAmount());
+}}>
+  <option value="date">Date</option>
+  <option value="amount">Amount</option>
+</select>
